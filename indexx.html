@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">  <!-- Link to CSS -->
+    <title>EduNova </title>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+      <img src="logo.gif" alt="Logo EduNova">
+      <h1><a href="indexx.html" style="text-decoration: none; color: aliceblue;"> ÉduNova</a></h1>
+      <nav>
+          <a href="apprenant.html"><strong>Apprenant</strong></a>
+          <a href="enseignant.html" ><strong>Enseignant</strong></a>
+          <a href="parent.html"><strong>Parent</strong></a>
+      </nav>
+  </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="text-section">
+            <h1>
+                <span>Préserver</span>
+                <span>Progresser</span>
+                <span>Briller &nbsp; &nbsp; <button ><a href="notrevision.html" target="_blank" style="text-decoration: none; color: inherit;" >Notre vision</a></button></span>
+            </h1>
+            
+        </div>
+
+        <div class="image-section">
+            <img src="image.png" alt="Technology Image">
+        </div>
+        
+    </div>
+
+    <div class="scroll-arrow" id="scroll-arrow">&#8595;</div>
+    <div class="content" id="content">
+        <h2>ÉduNova</h2>
+        <p><strong> Un espace où l'apprentissage devient une nouvelle aventure!<br> <br>Avec ÉduNova, chaque utilisateur trouve des outils adaptés à ses besoins pour rendre l’apprentissage simple, amusant et enrichissant. Rejoignez-nous pour explorer un monde d’éducation vibrant, accessible et pensé pour l’avenir.</strong></p>
+    </div>
+
+    <div class="blob" id="blob"></div>
+    <div class="blur" id="blur"></div>
+    <section id="contact">
+        <div class="image-contact">
+          <p style="position: relative; z-index: 2; font-size: 2.7em; color: #f1a5d6; font-family: cursive;">
+            <strong>Nous serions ravis de vous entendre ! <br> Remplissez le formulaire ci-dessous pour nous contacter.</strong>
+          </p>
+          <img src="c:\Users\GSI\Desktop\Edunova\contact" alt="contact image">
+          <div class="contact-container">
+            <h2>Contactez-nous</h2>
+            <form id="contact-form">
+              <label for="name">Nom et Prénom:</label>
+              <input type="text" id="name" name="name" placeholder="Votre Nom et Prénom" required>
+      
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="Votre Email" required>
+      
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="5" placeholder="Votre Message" required></textarea>
+      
+              <button type="submit">Envoyez un message</button>
+            </form>
+            <p id="response-message" style="margin-top: 10px; color: #007bff;"></p>
+          </div>
+        </div>
+      </section>
+      
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        const blob = document.getElementById("blob");
+        document.body.onpointermove = event => {
+            const{ clientX, clientY}= event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            },{duration:2000, fill:"forwards"});
+            
+        }
+        
+        // Initialize EmailJS
+        emailjs.init('L0J_nbIhlODlZrQBv'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS public key
+      
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+          event.preventDefault(); // Prevent the default form submission
+      
+          // Collect form data
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const message = document.getElementById('message').value;
+      
+          // Use EmailJS to send the email
+          emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            from_name: name,
+            from_email: email,
+            message: message,
+          }).then(
+            function (response) {
+              document.getElementById('response-message').innerText = "Message envoyé avec succès ! Merci de nous avoir contactés.";
+            },
+            function (error) {
+              document.getElementById('response-message').innerText = "Désolé, une erreur s'est produite. Veuillez réessayer.";
+            }
+          );
+        });
+        
+    
+        document.getElementById('scroll-arrow').addEventListener('click', function() {
+        document.getElementById('content').scrollIntoView({ behavior: 'smooth' });7
+    });
+        document.getElementById('logo').addEventListener('click', function() {
+        this.classList.toggle('animate');
+
+    });
+    
+    
+
+
+    </script>  <!-- Link to JavaScript -->
+
+</body>
+</html>
+
